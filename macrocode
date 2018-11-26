@@ -1,0 +1,239 @@
+package test_proj;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
+
+public class Macroconv {
+
+	private static final String Type_Name = null;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+	void Actual_OutputUpdate(String State_Name, String Environment_Name,WebDriver driver) throws RowsExceededException, BiffException, WriteException, IOException, InterruptedException {
+   	 FileInputStream fis=new FileInputStream("S:\\Corporate Shared\\Corporate Initiatives\\ETCCM_Enterprise_Reporting\\02_Qulaity_Center\\04_Automation\\02_Infosys\\2018 Q2 ATMN\\LG-Emp - nav1 - latest\\LG-EmployerMigration\\src\\main\\java\\Datatables\\Book1.xls");
+		Workbook workbook = Workbook.getWorkbook(fis);
+		Sheet sht=workbook.getSheet(State_Name);
+       String actual_Input1 = sht.getCell(1,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 1].Value;
+       String actual_Input2 = sht.getCell(5,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 5].Value;
+       String actual_Input3 = sht.getCell(9,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 9].Value;
+       String actual_Input4 = sht.getCell(13,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 13].Value;
+       String actual_Input5 = sht.getCell(17,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 17].Value;
+       String actual_Input6 = sht.getCell(21,7).getContents();//ThisWorkbook.Sheets(State_Name).Cells[7, 21].Value;
+       String[] state_Val = new String[5];
+       state_Val[0]=actual_Input1;
+       state_Val[1]=actual_Input2;
+       state_Val[2]=actual_Input3;
+       state_Val[3]=actual_Input4;
+       state_Val[4]=actual_Input5;
+       state_Val[5]=actual_Input6;
+       String InputColumn_Var = "";
+       
+       //state_Val = {actual_Input1, actual_Input2, actual_Input3, actual_Input4, actual_Input5, actual_Input6};
+       int row_Val = 8;
+       for (int N = 0; (N <= state_Val.length); N++) {
+           if ((state_Val[N] == "")) {
+               
+           }
+           else {
+               //  MsgBox state_Val(N)
+               switch (state_Val[N]) {
+                   case "Input 1":
+                       int inPut_Column1;
+                       inPut_Column1 = 1;
+                       int outPut_Column1;
+                       outPut_Column1 = 3;
+                        InputColumn_Var = "A";
+                       String Type_Name = IdentifyType(sht, row_Val, inPut_Column1);
+                       if ((Type_Name != "Nothing")) {
+                    	   Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column1, outPut_Column1, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   case "Input 2":
+                       int inPut_Column2 = 5;
+                       int outPut_Column2 = 7;
+                        InputColumn_Var = "E";
+                       Type_Name = IdentifyType(sht, row_Val, inPut_Column2);
+                       if ((Type_Name != "Nothing")) {
+                    	   Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column2, outPut_Column2, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   case "Input 3":
+                       int inPut_Column3 = 9;
+                       int outPut_Column3 = 11;
+                        InputColumn_Var = "I";
+                       Type_Name = IdentifyType(sht, row_Val, inPut_Column3);
+                       if ((Type_Name != "Nothing")) {
+                    	   Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column3, outPut_Column3, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   case "Input 4":
+                       int inPut_Column4 = 13;
+                       int outPut_Column4 = 15;
+                        InputColumn_Var = "M";
+                       Type_Name = IdentifyType(sht, row_Val, inPut_Column4);
+                       if ((Type_Name != "Nothing")) {
+                    	   Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column4, outPut_Column4, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   case "Input 5":
+                       int inPut_Column5 = 17;
+                       int outPut_Column5 = 19;
+                        InputColumn_Var = "Q";
+                       Type_Name = IdentifyType(sht, row_Val, inPut_Column5);
+                       if ((Type_Name != "Nothing")) {
+                           Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column5, outPut_Column5, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   case "Input 6":
+                       int inPut_Column6 = 21;
+                       int outPut_Column6 = 23;
+                        InputColumn_Var = "U";
+                       Type_Name = IdentifyType(sht, row_Val, inPut_Column6);
+                       if ((Type_Name != "Nothing")) {
+                    	   Select_URL(Type_Name, Environment_Name,driver,sht);
+                           ActualOutput1(sht, row_Val, inPut_Column6, outPut_Column6, InputColumn_Var,driver,State_Name);
+                           driver.quit();
+                       }
+                       
+                       break;
+                   default:
+                	   driver.quit();
+                       //result = "Incorrect URL";
+                       break;
+               }
+           }
+           
+       }
+       
+   }
+   
+    String IdentifyType(Sheet sht, int row_Val, int inPut_Column1) {
+    	String Type_Name="";
+       String strdata = sht.getCell(inPut_Column1,row_Val).getContents();//sht.Cells[row_Val, inPut_Column1].Value;
+       if (((strdata.indexOf("Inpatient") + 1)!= 0)) 
+       {
+           Type_Name = "Inpatient";
+       }
+       else if (((strdata.indexOf("Outpatient") + 1) 
+                   != 0)) {
+            Type_Name = "Outpatient";
+       }
+       else if ((strdata == "")) {
+            Type_Name = "Nothing";
+
+       }
+	return Type_Name;
+       
+   }
+   
+    void Select_URL(String Type_Name, String Environment_Name,WebDriver driver,Sheet sht) {
+    	String URL="";
+    	        
+    	        switch (Type_Name) {
+    	            case "Inpatient":
+    	                if ((Environment_Name == "Test")) {
+    	                    URL = sht.getCell(11,7).getContents();//ThisWorkbook.Sheets("Home").Cells[7, 11].Value;
+    						driver.get(URL);
+    	                }
+    	                else {
+    	                    URL = sht.getCell(11,8).getContents();//ThisWorkbook.Sheets("Home").Cells[8, 11].Value;
+    	                    driver.get(URL);
+    	                }
+    	                
+    	                break;
+    	            case "Outpatient":
+    	                if ((Environment_Name == "Test")) {
+    	                    URL = sht.getCell(11,9).getContents();//ThisWorkbook.Sheets("Home").Cells[9, 11].Value;
+    	                    driver.get(URL);
+    	                }
+    	                else {
+    	                    URL = sht.getCell(11,10).getContents();//ThisWorkbook.Sheets("Home").Cells[10, 11].Value;
+    	                   driver.get(URL);
+    	                }
+    	                
+    	                break;
+    	            default:
+    	                driver.quit();
+    	                break;
+    	        }
+    	    }
+    
+    
+    
+void WebActions(String Input_value,WebDriver driver) throws InterruptedException {
+        
+        driver.findElement(By.id("TextBoxResults")).sendKeys(Input_value);
+Thread.sleep(5000);
+driver.findElement(By.id("Load_Button")).click();
+Thread.sleep(5000);
+ driver.findElement(By.id("Submit_Button")).click();
+Thread.sleep(5000);
+    }
+
+void ActualOutput1(Sheet sheetname_val, int row_Val, int inPut_Column, int outPut_Column, String InputColumn_Var,WebDriver driver,String state) throws BiffException, IOException, InterruptedException, RowsExceededException, WriteException {
+	String Input_1="";
+    // Dim TotalRows As Long
+    // TotalRows = sheetname_val.Rows(sheetname_val.Rows.Count).End(xlUp).Row
+	FileInputStream fis=new FileInputStream("S:\\Corporate Shared\\Corporate Initiatives\\ETCCM_Enterprise_Reporting\\02_Qulaity_Center\\04_Automation\\02_Infosys\\2018 Q2 ATMN\\LG-Emp - nav1 - latest\\LG-EmployerMigration\\src\\main\\java\\Datatables\\Book1.xls");
+	Workbook workbook = Workbook.getWorkbook(fis);
+	FileOutputStream fos=new FileOutputStream("S:\\Corporate Shared\\Corporate Initiatives\\ETCCM_Enterprise_Reporting\\02_Qulaity_Center\\04_Automation\\02_Infosys\\2018 Q2 ATMN\\LG-Emp - nav1 - latest\\LG-EmployerMigration\\src\\main\\java\\Datatables\\Book1.xls");
+	WritableWorkbook  wb = Workbook.createWorkbook(fos,workbook);
+    int LastRow = sheetname_val.getRows();
+    String[] strArray = new String[LastRow];
+   for (int i = 0; i < strArray.length; i++) {
+	Input_1=sheetname_val.getCell(inPut_Column,i).getContents() + "\r\n";
+}
+    
+    // MsgBox "Loaded " & UBound(strArray) & " items!"
+Thread.sleep(4000);    
+WebActions(Input_1,driver);
+
+    String strvb = driver.findElement(By.id("TextBoxResults")).getText();
+    String[] MySplitFunction = strvb.split("\n");
+    String temp="";
+    String new_temp="";		
+    for (int i = 0; i <= MySplitFunction.length; i++) {
+		temp=MySplitFunction[i];
+		new_temp=temp.substring(0,  (temp.length() - 1));
+		jxl.write.Label label1 = new jxl.write.Label(outPut_Column,(i + row_Val),new_temp);
+		WritableSheet sht1=wb.getSheet(state);		
+		sht1.addCell(label1);
+	}
+    wb.write();
+	wb.close();
+}
+
+}   
+    
+
+    
